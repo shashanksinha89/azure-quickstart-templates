@@ -97,21 +97,21 @@
     },
     "routerNodeVmSize": {
       "type": "string",
-      "defaultValue": "Standard_DS3_v2",
+      "defaultValue": "Standard_D4s_v3",
       "metadata": {
         "description": "The size of the virtual machines used when provisioning the router nodes"
       }
     },
     "configNodeVmSize": {
       "type": "string",
-      "defaultValue": "Standard_DS3_v2",
+      "defaultValue": "Standard_D4s_v3",
       "metadata": {
         "description": "The size of the virtual machines used when provisioning config nodes"
       }
     },
     "replicaNodeVmSize": {
       "type": "string",
-      "defaultValue": "Standard_DS3_v2",
+      "defaultValue": "Standard_D4s_v3",
       "metadata": {
         "description": "The size of the virtual machines used when provisioning replica set nodes"
       }
@@ -125,7 +125,7 @@
     }
   },
   "variables": {
-    "baseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-sharding-centos/",
+    "baseUrl": "https://raw.githubusercontent.com/shashanksinha89/azure-quickstart-templates/master/mongodb-sharding-centos/",
     "baseChinaUrl": "http://msmirrors.blob.core.chinacloudapi.cn/mongodb/mongodb-sharding-centos/",
     "environmentAzureCloud": {
       "serviceEndPoint": "core.windows.net",
@@ -160,26 +160,26 @@
     "virtualNetworkName": "myVNET",
     "networkSettings": {
       "virtualNetworkName": "[variables('virtualNetworkName')]",
-      "addressPrefix": "10.0.0.0/16",
+      "addressPrefix": "10.1.0.0/16",
       "subnet": {
         "dse": {
           "name": "dse",
-          "prefix": "10.0.0.0/24",
+          "prefix": "10.1.0.0/24",
           "vnet": "[variables('virtualNetworkName')]"
         }
       },
       "statics": {
         "clusterRange": {
-          "base": "10.0.0.",
+          "base": "10.1.0.",
           "start": 5
         },
-        "configPrimaryIp": "10.0.0.240",
-        "configSecondaryIp1": "10.0.0.241",
-        "configSecondaryIp2": "10.0.0.242",
-        "routerIp1": "10.0.0.230",
-        "routerIp2": "10.0.0.231",
-        "replicaPrimaryIp1": "10.0.0.100",
-        "replicaPrimaryIp2": "10.0.0.110"
+        "configPrimaryIp": "10.1.0.240",
+        "configSecondaryIp1": "10.1.0.241",
+        "configSecondaryIp2": "10.1.0.242",
+        "routerIp1": "10.1.0.230",
+        "routerIp2": "10.1.0.231",
+        "replicaPrimaryIp1": "10.1.0.100",
+        "replicaPrimaryIp2": "10.1.0.110"
       }
     },
     "configPrimaryOsSettings": {
