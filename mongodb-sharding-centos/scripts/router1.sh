@@ -83,7 +83,7 @@ install_zabbix
 
 
 #start router server
-mongos --configdb crepset/10.0.0.240:27019,10.0.0.241:27019,10.0.0.242:27019 --port 27017 --logpath /var/log/mongodb/mongos.log --fork --keyFile /etc/mongokeyfile
+mongos --configdb crepset/10.1.0.240:27019,10.1.0.241:27019,10.1.0.242:27019 --port 27017 --logpath /var/log/mongodb/mongos.log --fork --keyFile /etc/mongokeyfile
 
 
 #check router server starts or not
@@ -95,7 +95,7 @@ do
 		echo "mongos started successfully"
 		break
 	else
-		mongos --configdb crepset/10.0.0.240:27019,10.0.0.241:27019,10.0.0.242:27019 --port 27017 --logpath /var/log/mongodb/mongos.log --fork --keyFile /etc/mongokeyfile
+		mongos --configdb crepset/10.1.0.240:27019,10.1.0.241:27019,10.1.0.242:27019 --port 27017 --logpath /var/log/mongodb/mongos.log --fork --keyFile /etc/mongokeyfile
 		continue
 	fi
 done
@@ -109,8 +109,8 @@ fi
 mongo --port 27017 <<EOF
 use admin
 db.auth("$mongoAdminUser","$mongoAdminPasswd")
-sh.addShard("repset1/10.0.0.100:27017")
-sh.addShard("repset2/10.0.0.110:27017")
+sh.addShard("repset1/10.1.0.100:27017")
+sh.addShard("repset2/10.1.0.110:27017")
 db.runCommand( { listshards : 1 } )
 exit
 EOF
@@ -134,7 +134,7 @@ if [[ ! -d /var/run/mongodb ]];then
 mkdir /var/run/mongodb
 chown -R mongod:mongod /var/run/mongodb
 fi
-mongos --configdb crepset/10.0.0.240:27019,10.0.0.241:27019,10.0.0.242:27019 --port 27017 --logpath /var/log/mongodb/mongos.log --fork --keyFile /etc/mongokeyfile
+mongos --configdb crepset/10.1.0.240:27019,10.1.0.241:27019,10.1.0.242:27019 --port 27017 --logpath /var/log/mongodb/mongos.log --fork --keyFile /etc/mongokeyfile
 }
 stop() {
 pkill mongod
